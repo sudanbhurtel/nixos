@@ -14,7 +14,7 @@ services.greetd = {
       enable = true;
       vt = 3;
   settings.default_session = {
-  command = "${pkgs.hyprland}/bin/Hyprland --config ${hyprConfig}";
+  command = "${pkgs.hyprland}/bin/Hyprland --config ${hyprConfig}&>/dev/null";
   };
 };
 programs.regreet = {
