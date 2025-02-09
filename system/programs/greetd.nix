@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
 hyprConfig = pkgs.writeText "greetd-hyprland-config" ''
 exec-once = ${pkgs.greetd.regreet}/bin/regreet; hyprctl dispatch exit
@@ -21,7 +21,9 @@ services.greetd = {
 };
 programs.regreet = {
 enable = true;
+theme = { name = "Flat-Remix-GTK-Blue-Darkest"; package = pkgs.flat-remix-gtk;};
+iconTheme = { name = "Adwaita";};
+cursorTheme = { name = "Bibata-Modern-Amber";};
+font = { name = "Cascadia Mono NF"; size = 14;};
 };
-
-
 }
