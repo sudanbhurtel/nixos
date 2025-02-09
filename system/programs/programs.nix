@@ -18,10 +18,6 @@
     fish.enable = true;
     dconf.enable = true;
     uwsm.enable = true;
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-    };
     bash = {
       interactiveShellInit = ''
                 if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -30,6 +26,16 @@
         	  exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
                 fi
       '';
+    };
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    foot = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      theme = "aeroroot";
     };
   };
 
