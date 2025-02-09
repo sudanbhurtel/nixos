@@ -17,6 +17,7 @@
   programs = {
     fish.enable = true;
     dconf.enable = true;
+    uwsm.enable = true;
     hyprland = {
       enable = true;
       withUWSM = true;
