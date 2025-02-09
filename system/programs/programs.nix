@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  imports = [ ./greetd.nix ];
   ### Packages ###
   environment.systemPackages = with pkgs; [
     wget
@@ -41,13 +42,6 @@
       jack.enable = true;
       pulse.enable = true;
     };
-    greetd = {
-      enable = true;
-      vt = 2;
-  settings.default_session = {
-  command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.hyprland}/bin/Hyprland";
-  };
-};
     libinput.enable = true;
     clight.enable = false;
     geoclue2.enable = true;
