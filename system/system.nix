@@ -2,23 +2,39 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./boot.nix
+    ./hardware.nix
     ./programs/programs.nix
   ];
 
   time.timeZone = "Asia/Seoul";
   i18n.defaultLocale = "en_US.UTF-8";
-  hardware = {
-    enableRedistributableFirmware = true;
+  hardware.enableRedistributableFirmware = true;
+
+  ### Boot ###
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        device = "nodev";
+        efiSupport = true;
+      };
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernel.sysctl."kernel.sysrq" = 1;
   };
-  fonts.packages = with pkgs; [ meslo-lgs-nf ];
-  system.stateVersion = "24.05"; # Do not edit!!
+
+  ### Networking ###
+  networking = {
+    hostName = "nixpad";
+    networkmanager.enable = true;
+    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
 
   ### Console ###
   console = {
@@ -27,22 +43,12 @@
     keyMap = "us";
   };
 
-  ### Networking ###
-  networking = {
-    hostName = "nixpad";
-    networkmanager.enable = true;
-
-    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  };
-
   ### Nix ###
   nix.settings = {
     experimental-features = [
       "nix-command"
       "flakes"
     ];
-    substituters = [ "https://walker.cachix.org" ];
-    trusted-public-keys = [ "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM=" ];
   };
 
   ### Security ###
@@ -51,6 +57,8 @@
     rtkit.enable = true;
   };
 
+  ### Environment ###
+  
   ### Users ###
   users.users.sdn = {
     isNormalUser = true;
@@ -60,4 +68,7 @@
       "network"
     ];
   };
+
+  system.stateVersion = "24.11"; # ## Do not edit!!
+
 }

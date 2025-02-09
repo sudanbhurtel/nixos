@@ -1,29 +1,33 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
-    ./hypr/hypridle.nix
-    ./hypr/hyprlock.nix
-    ./hypr/hyprland.nix
-    ./hypr/hyprpaper.nix
-    ./waybar/waybar.nix
-    ./wlogout/wlogout.nix
     ./emacs.nix
-    ./alacritty.nix
     ./git.nix
+    ./alacritty.nix
+    ./hypr/hypr.nix
   ];
   ### Packages ###
   home.packages = with pkgs; [
     hyprsunset
     hyprpolkitagent
-    clipboard-jh
-    unstable.walker
-    stremio
-    kodi-wayland
-    waypaper
+    hyprlock
+    mate.mate-backgrounds
+    budgie-backgrounds
+    gnome-backgrounds
+    nwg-bar
 
-    ### fonts ###
+    ### Fonts ###
     font-awesome
     cantarell-fonts
+    noto-fonts
+    noto-fonts-lgc-plus
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
     (nerdfonts.override {
       fonts = [
         "JetBrainsMono"
@@ -35,19 +39,16 @@
         "CascadiaCode"
       ];
     })
-    noto-fonts
-    noto-fonts-lgc-plus
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
+
   ];
   ### Programs ###
   programs = {
+    firefox.enable = true;
     fuzzel.enable = true;
     btop.enable = true;
     imv.enable = true;
-    firefox.enable = true;
+
   };
   ### Services ###
   services.easyeffects.enable = true;
-
 }

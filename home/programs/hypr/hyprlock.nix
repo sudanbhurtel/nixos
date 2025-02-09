@@ -1,93 +1,78 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   programs.hyprlock = {
     enable = true;
     settings = {
-      "$font" = "JetBrainsMono Nerd Font Propo";
-      "$fg-color" = "rgba(115,200,235,1)";
-      "$bg-color" = "rgba(40, 50, 70, 0.9)";
-      "$shadow-color" = "rgba(10, 10, 20, 0.5)";
-      "$border-color" = "rgba(9,85,120,1)";
-      "$selection-color" = "rgba(100,0,200,1)";
-      "$alert-color" = "rgba(255,190,0,1)";
-      "$warning-color" = "rgba(255,0,0,1)";
       general = {
         disable_loading_bar = true;
-        grace = 5;
         hide_cursor = true;
+        grace = 5;
+        ignore_empty_input = true;
+        immediate_render = true;
       };
-      # Background
       background = [
         {
-          path = "/home/sdn/.config/backgrounds/hyprlock/wallpaper.jpg";
-          color = "$bg-color";
+          path = "${pkgs.budgie-backgrounds}/share/backgrounds/budgie/blue-periwinkle.jpg";
+          blur_passes = 2;
         }
       ];
-      # Input Field
+      image = [
+        {
+          path = "${pkgs.mate.mate-backgrounds}/share/backgrounds/mate/nature/Garden.jpg";
+          rounding = 20;
+          border_size = 2;
+          border_color = "rgba(0,207,230,1.0)";
+          position = "0, 220";
+
+        }
+      ];
+      shape = [
+        {
+          size = "700, 200";
+          color = "rgba(17,17,17,0.95)";
+          rounding = 20;
+          border_size = 2;
+          position = "0, 0";
+        }
+      ];
       input-field = [
         {
-          size = "230, 60";
+          size = "350, 70";
+          outline_thickness = 3;
+          inner_color = "rgba(17,17,17,0.95)";
+          outer_color = "rgba(150,100,220,1.0)";
+          check_color = "rgba(0,100,0,1.0)";
+          fail_color = "rgba(100,0,0,1.0)";
+          font_color = "rgb(100, 190, 190)";
+          font_family = "Iosevka Nerd Font Mono";
           fade_on_empty = false;
-          dots_size = 0.35;
-          dots_spacing = 0.25;
-          outer_color = "$border-color";
-          inner_color = "$bg-color";
-          font_color = "$fg-color";
-          placeholder_text = "<span font_family='JetBrainsMono Nerd Font Propo' font_size='35pt' font_weight='bold'>󱅞 <span font_size='20pt' rise='8pt'>Welcome $USER!!</span></span>";
-          check_color = "$selection-color";
-          fail_color = "$warning-color";
-          fail_text = "<span font_size='20pt'>Wrong Password<span>($ATTEMPTS)</span></span>";
-          fail_transition = 500;
-          rounding = 25;
-          position = "0, 50";
-          halign = "center";
+          placeholder_text = "<span font_size='20pt'><i>Input Password</i></span>";
+          fail_text = "<span size='20pt'><i>$FAIL <b>($ATTEMPTS)</b></i></span>";
+          swap_font_color = true;
+          rounding = 15;
+          position = "0, 150";
           valign = "bottom";
+
         }
       ];
       label = [
-        # Time-Hour
         {
-          text = "cmd[update:30000] date +'%H'";
-          color = "$alert-color";
-          font_size = 250;
-          font_family = "$font";
-          shadow_passes = 1;
-          shadow_size = 1;
-          shadow_color = "$shadow-color";
-          shadow_boost = 1.5;
-          position = "0, -100";
+          text = "cmd[update:1000] echo ''$(date)''";
+          color = "rgba(0,150,240,1.0)";
+          font_size = 25;
+          font_family = "JetBrainsMono Nerd Font Mono";
+          position = "0, -30";
           halign = "center";
-          valign = "top";
-
+          valign = "center";
         }
-        # Time-Minute
         {
-          text = "cmd[update:30000] date +'%M'";
-          color = "$fg-color";
-          font_size = 250;
-          font_family = "$font";
-          shadow_passes = 1;
-          shadow_size = 1;
-          shadow_color = "$shadow-color";
-          shadow_boost = 1.5;
-          position = "0, -375";
+          text = "Hello, Sudan!!";
+          color = "rgba(160,160,0,1.0)";
+          font_size = 25;
+          font_family = "Cascadia Code NF";
+          position = "0, 35";
           halign = "center";
-          valign = "top";
-
-        }
-        # Date
-        {
-          text = "cmd[update:43200000] echo \"<span> $(date +'%A,')</span><span color='##ffbf00ff'>$(date '+%d %B')</span>\"";
-          color = "$fg-color";
-          font_size = 30;
-          font_family = "$font";
-          shadow_passes = 1;
-          shadow_size = 1;
-          shadow_boost = 2.5;
-          shadow_color = "$shadow-color";
-          position = "0, 350";
-          halign = "center";
-          valign = "bottom";
+          valign = "center";
         }
       ];
     };

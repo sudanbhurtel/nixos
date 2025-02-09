@@ -6,6 +6,6 @@
     userEmail = "sudanbhurtel@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
-      };
+    };
   };
 }

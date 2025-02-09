@@ -2,11 +2,13 @@
 {
   imports = [ ./programs/programs.nix ];
 
+  fonts.fontconfig.enable = true;
+
   ### Home ###
   home = {
     username = "sdn";
     homeDirectory = "/home/sdn";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
 
     ### Cursor ###
     pointerCursor = {
@@ -18,14 +20,12 @@
     };
   };
 
-  fonts.fontconfig.enable = true;
-
   ### GTK ###
   gtk = {
     enable = true;
     theme = {
       package = pkgs.flat-remix-gtk;
-      name = "Flat-Remix-GTK-Grey-Darkest";
+      name = "Flat-Remix-GTK-Grey_Darkest";
     };
     iconTheme = {
       package = pkgs.adwaita-icon-theme;
@@ -37,4 +37,5 @@
       size = 18;
     };
   };
+
 }

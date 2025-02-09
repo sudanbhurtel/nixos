@@ -1,37 +1,36 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./bash.nix
-    ./greetd.nix
-    ./regreet/regreet.nix
-  ];
-
   ### Packages ###
   environment.systemPackages = with pkgs; [
     wget
     acpi
+    brightnessctl
     nixfmt-rfc-style
     hicolor-icon-theme
     nixos-icons
     p7zip
+    
   ];
 
   ### Programs ###
   programs = {
+    fish.enable = true;
+    dconf.enable = true;
     hyprland = {
       enable = true;
       withUWSM = true;
     };
-    fish.enable = true;
-    dconf.enable = true;
-    light = {
-      enable = true;
-      brightnessKeys = {
-        enable = true;
-        step = 10;
-      };
+    bash = {
+      interactiveShellInit = ''
+                if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+        	then
+        	  shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        	  exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+                fi
+      '';
     };
   };
+
   ### Services ###
   services = {
     pipewire = {
@@ -41,17 +40,16 @@
       alsa.support32Bit = true;
       jack.enable = true;
       pulse.enable = true;
-
     };
-    kmscon = {
+    greetd = {
       enable = true;
-      hwRender = true;
-      extraConfig = ''
-        font-name=MesloLGS NF
-        font-size=14
-      '';
-    };
-    libinput.enable = true;
+      vt = 2;
+  settings.default_session = {
+  command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.hyprland}/bin/Hyprland";
   };
-
+};
+    libinput.enable = true;
+    clight.enable = false;
+    geoclue2.enable = true;
+  };
 }
