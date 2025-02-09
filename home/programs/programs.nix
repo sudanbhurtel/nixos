@@ -20,6 +20,7 @@
     budgie-backgrounds
     gnome-backgrounds
     nwg-bar
+    waybar
 
     ### Fonts ###
     font-awesome
