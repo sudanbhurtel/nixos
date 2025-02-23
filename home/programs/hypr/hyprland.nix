@@ -16,8 +16,8 @@
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 2;
+        gaps_out = 4;
         border_size = 2;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
@@ -111,8 +111,8 @@
       };
 
       "$mainMod" = "SUPER";
-      "$terminal" = "alacritty";
-      "$menu" = "fuzzel";
+      "$terminal" = "wezterm";
+      "$menu" = "walker";
       "$browser" = "firefox";
       "$editor" = "emacs";
       "$lock" = "hyprlock";
@@ -125,8 +125,8 @@
           "$mainMod, R, exec, $menu"
           "$mainMod, C, killactive,"
           "$mainMod SHIFT, Q, exit,"
-	  "$mainMod, F, fullscreen, 0"
-	  "$mainMod, M, fullscreen, 1"
+          "$mainMod, F, fullscreen, 0"
+          "$mainMod, M, fullscreen, 1"
           "$mainMod, V, togglefloating,"
           "$mainMod, B, exec, $browser"
           "$mainMod, P, pseudo,"
@@ -164,12 +164,12 @@
         "$mainMod, mouse:273, resizewindow"
       ];
       bindel = [
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+"
+        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-	",XF86MonBrightnessUp, exec, brightnessctl s 5%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl s 5%-"
+        ",XF86MonBrightnessUp, exec, brightnessctl s 1%+"
+        ",XF86MonBrightnessDown, exec, brightnessctl s 1%-"
       ];
 
     };

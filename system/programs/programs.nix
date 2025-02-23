@@ -36,7 +36,12 @@
       enableBashIntegration = true;
       enableFishIntegration = true;
       theme = "aeroroot";
+      settings = {
+  main = {
+    font = "CascadiaMonoNF:size=16";
+  };
     };
+  };
   };
 
   ### Services ###
