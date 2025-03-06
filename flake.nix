@@ -12,10 +12,6 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    walker = {
-    url = "github:abenz1267/walker?ref=v0.12.15";
-    inputs.nixpkgs.follows = "nixpkgs";
-};
   };
 
   outputs =

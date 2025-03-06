@@ -2,7 +2,6 @@
 {
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
     settings = {
       mainBar = {
         height = 28;
@@ -71,13 +70,13 @@
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
-            "1" = "";
-            "2" = "";
-            "3" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "󱞏";
             default = "";
           };
           persistent-workspaces = {
-            "*" = 3;
+            "*" = 4;
           };
         };
         "wireplumber" = {

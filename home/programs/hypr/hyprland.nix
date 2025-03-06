@@ -2,14 +2,33 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = false;
     settings = {
 
-      monitor = "eDP-1,1920x1200@60,0x0,1";
+      "$mainMod" = "SUPER";
+      "$uwsm" = "uwsm app -- ";
+      "$terminal" = "wezterm";
+      "$menu" = "walker";
+      "$browser" = "firefox";
+      "$editor" = "emacs";
+      "$lock" = "hyprlock";
+      "$clipboard" = "cb";
+      
+      monitor = ", preferred, auto, 1";
+      
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
 
+      exec-once = [
+      "systemctl --user enable --now waybar.service"
+      "systemctl --user enable --now hyprpaper.service"
+      "[workspace 2 silent] $uwsm $terminal"
+      "[workspace 3 silent] $uwsm $browser"
+      "[workspace 4 silent] $uwsm $editor"
+      
+      ];
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
@@ -110,25 +129,20 @@
         sensitivity = -0.5;
       };
 
-      "$mainMod" = "SUPER";
-      "$terminal" = "wezterm";
-      "$menu" = "walker";
-      "$browser" = "firefox";
-      "$editor" = "emacs";
-      "$lock" = "hyprlock";
+      
 
       bind =
         [
-          "$mainMod SHIFT, L, exec, $lock"
-          "$mainMod, RETURN, exec, $terminal"
+          "$mainMod SHIFT, L, exec, $uwsm $lock"
+          "$mainMod, RETURN, exec, $uwsm $terminal"
           "$mainMod, E, exec, $editor"
           "$mainMod, R, exec, $menu"
+          "$mainMod, B, exec, $uwsm $browser"
           "$mainMod, C, killactive,"
           "$mainMod SHIFT, Q, exit,"
           "$mainMod, F, fullscreen, 0"
           "$mainMod, M, fullscreen, 1"
           "$mainMod, V, togglefloating,"
-          "$mainMod, B, exec, $browser"
           "$mainMod, P, pseudo,"
           "$mainMod, J, togglesplit,"
           "$mainMod, left, movefocus, l"

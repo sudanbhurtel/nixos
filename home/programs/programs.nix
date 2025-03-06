@@ -11,19 +11,19 @@
     ./git.nix
     ./alacritty.nix
     ./hypr/hypr.nix
-    ./walker.nix
   ];
   ### Packages ###
   home.packages = with pkgs; [
     inputs.quickshell.packages.${pkgs.system}.default
     hyprsunset
     hyprpolkitagent
-    hyprlock
     mate.mate-backgrounds
     budgie-backgrounds
     gnome-backgrounds
     nwg-bar
-    waybar
+    unstable.walker
+    unstable.ags
+    clipboard-jh
 
     ### Fonts ###
     font-awesome
