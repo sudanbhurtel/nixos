@@ -18,6 +18,7 @@
     fish.enable = true;
     dconf.enable = true;
     uwsm.enable = true;
+    virt-manager.enable = true;
     bash = {
       interactiveShellInit = ''
                 if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -31,17 +32,7 @@
       enable = true;
       withUWSM = true;
     };
-    foot = {
-      enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      theme = "aeroroot";
-      settings = {
-  main = {
-    font = "CascadiaMonoNF:size=16";
-  };
-    };
-  };
+   
   };
 
   ### Services ###
@@ -56,7 +47,8 @@
       alsa.support32Bit = true;
     };
     libinput.enable = true;
-    clight.enable = false;
     geoclue2.enable = true;
+    power-profiles-daemon.enable = true;
+    blueman.enable = true;
   };
 }

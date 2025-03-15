@@ -24,6 +24,18 @@
     unstable.walker
     unstable.ags
     clipboard-jh
+    ov
+    moar
+    mc
+    ranger
+    nnn
+    lf
+    yazi
+    mate.caja
+    lxqt.pcmanfm-qt
+    xfce.thunar
+    font-manager
+    wluma
 
     ### Fonts ###
     font-awesome
@@ -67,4 +79,7 @@
   };
   ### Services ###
   services.easyeffects.enable = true;
+  services.udiskie.enable = true;
+  services.conky.enable = true;
+  services.blueman-applet.enable = true;
 }

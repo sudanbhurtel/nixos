@@ -14,7 +14,6 @@
 
   time.timeZone = "Asia/Seoul";
   i18n.defaultLocale = "en_US.UTF-8";
-  hardware.enableRedistributableFirmware = true;
 
   ### Boot ###
   boot = {
@@ -28,6 +27,14 @@
     kernelPackages = pkgs.linuxPackages_latest;
     kernel.sysctl."kernel.sysrq" = 1;
   };
+  ### Hardware ###
+    hardware = {
+    enableRedistributableFirmware = true;
+    bluetooth = {
+        enable = true;
+        powerOnBoot = false;
+    };
+    };
 
   ### Networking ###
   networking = {
@@ -49,8 +56,6 @@
       "nix-command"
       "flakes"
     ];
-  substituters = ["https://walker.cachix.org"];
-  trusted-public-keys = ["walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="];
   };
 
   ### Security ###
@@ -58,6 +63,9 @@
     polkit.enable = true;
     rtkit.enable = true;
   };
+
+  ### Virtualisation ###
+  virtualisation.libvirtd.enable = true;
 
   ### Environment ###
   
