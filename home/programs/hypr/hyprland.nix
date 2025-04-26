@@ -19,7 +19,7 @@
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-	"bordercolor rgb(00ff00), fullscreen:1"
+	"bordercolor rgb(ff0000), fullscreen:1"
       ];
 
       exec-once = [

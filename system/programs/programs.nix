@@ -10,6 +10,7 @@
     hicolor-icon-theme
     nixos-icons
     p7zip
+    emacs-pgtk
     
   ];
 

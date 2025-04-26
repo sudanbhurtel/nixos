@@ -7,14 +7,12 @@
 {
   imports = [
     ./waybar.nix
-    ./emacs.nix
     ./git.nix
     ./alacritty.nix
     ./hypr/hypr.nix
   ];
   ### Packages ###
   home.packages = with pkgs; [
-    inputs.quickshell.packages.${pkgs.system}.default
     hyprsunset
     hyprpolkitagent
     mate.mate-backgrounds
@@ -26,16 +24,12 @@
     clipboard-jh
     ov
     moar
-    mc
-    ranger
-    nnn
-    lf
     yazi
-    mate.caja
-    lxqt.pcmanfm-qt
-    xfce.thunar
+    nemo
     font-manager
     wluma
+    qbittorrent
+    qview
 
     ### Fonts ###
     font-awesome
@@ -63,6 +57,7 @@
     fuzzel.enable = true;
     btop.enable = true;
     imv.enable = true;
+    mpv.enable = true;
     wezterm = {
       enable = true;
       enableBashIntegration = true;
