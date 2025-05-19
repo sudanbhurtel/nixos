@@ -5,7 +5,6 @@
   environment.systemPackages = with pkgs; [
     wget
     acpi
-    brightnessctl
     nixfmt-rfc-style
     hicolor-icon-theme
     nixos-icons
@@ -49,6 +48,7 @@
     };
     libinput.enable = true;
     geoclue2.enable = true;
+    upower.enable = true;
     power-profiles-daemon.enable = true;
     blueman.enable = true;
   };

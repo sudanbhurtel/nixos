@@ -183,8 +183,8 @@
         ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ",XF86MonBrightnessUp, exec, brightnessctl s 5%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl s 5%-"
+        ",XF86MonBrightnessUp, exec, brillo -A 5%+"
+        ",XF86MonBrightnessDown, exec, brillo -U 5%-"
       ];
 
     };

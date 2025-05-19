@@ -34,6 +34,7 @@
         enable = true;
         powerOnBoot = false;
     };
+    brillo.enable = true;
     };
 
   ### Networking ###

@@ -30,6 +30,7 @@
     wluma
     qbittorrent
     qview
+    inputs.quickshell.packages."x86_64-linux".default
 
     ### Fonts ###
     font-awesome
@@ -54,6 +55,7 @@
   ### Programs ###
   programs = {
     firefox.enable = true;
+    neovim.enable = true;
     fuzzel.enable = true;
     btop.enable = true;
     imv.enable = true;
@@ -73,6 +75,7 @@
     };
   };
   ### Services ###
+  services.copyq.enable = true;
   services.easyeffects.enable = true;
   services.udiskie.enable = true;
   services.conky.enable = true;
